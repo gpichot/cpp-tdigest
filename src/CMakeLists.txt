@@ -1,10 +1,7 @@
 
 add_library (tdigest 
     avltree.hpp
-    centroid.hpp
-    avltreedigest.hpp 
     tdigest.hpp
-    boostavltree.hpp
 )
 set_target_properties(tdigest PROPERTIES LINKER_LANGUAGE CXX)
 add_executable (demo main.cpp)

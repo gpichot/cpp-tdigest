@@ -7,4 +7,4 @@ enable_testing ()
 add_test (NAME AvlTreeTest COMMAND AvlTreeTest)
 
 
-list( APPEND CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
+list( APPEND CMAKE_CXX_FLAGS "-std=c++11 -DNDEBUG ${CMAKE_CXX_FLAGS}")
