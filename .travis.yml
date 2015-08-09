@@ -30,6 +30,9 @@ before_install:
     - popd
     # Install lcoveralls
     - gem install lcoveralls
+    # Config 
+    - if [ $CC == 'gcc' ]; then export CC='gcc-4.8'; export CXX='g++-4.8'; fi
+    - if [ $CC = 'clang' ]; then export CXX='clang++'; fi
 
 before_script:
     - mkdir build && cd build
