@@ -17,10 +17,19 @@ addons:
       - lcov
       - rubygems
       - g++-4.9
+      - gcc-4.9
       - cmake
       - cmake-data
                 
 before_install:
+    # Config 
+    - if [ $CC == 'gcc' ]; then export CC='gcc-4.9'; export CXX='g++-4.9'; fi
+    - if [ $CC = 'clang' ]; then export CXX='clang++'; fi
+    - $CC --version
+    - $CXX --version
+    - cmake --version
+    - lcov --version
+    - gcov --version
     # Build GTest
     - pushd "`pwd`"
     - sudo mkdir /usr/src/gtest/build
@@ -32,9 +41,6 @@ before_install:
     - popd
     # Install lcoveralls
     - gem install lcoveralls
-    # Config 
-    - if [ $CC == 'gcc' ]; then export CC='gcc-4.9'; export CXX='g++-4.9'; fi
-    - if [ $CC = 'clang' ]; then export CXX='clang++'; fi
 
 before_script:
     - mkdir build && cd build
