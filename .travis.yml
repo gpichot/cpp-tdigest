@@ -17,6 +17,8 @@ addons:
       - lcov
       - rubygems
       - g++-4.8
+      - cmake
+      - cmake-data
                 
 before_install:
     # Build GTest
