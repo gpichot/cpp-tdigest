@@ -6,7 +6,7 @@ compiler:
 
 before_install:
     - sudo apt-get update
-    - sudo apt-get install -qq libgtest0 libgtest-dev
+    - sudo apt-get install -qq libgtest-dev
     - sudo apt-get install -qq lcov rubygems
     - gem install lcoveralls
 
