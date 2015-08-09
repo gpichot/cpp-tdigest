@@ -18,6 +18,8 @@ before_install:
     - popd
     # Install lcov + rubygems
     - sudo apt-get install -qq lcov rubygems
+    # With g++ version 5
+    - if [ "$CXX" = "g++" ]; then sudo apt-get install -qq g++-5 --force-yes; export CXX="g++-5"; fi
     - gem install lcoveralls
 
 before_script:
