@@ -1,12 +1,24 @@
 language: cpp
 
-compiler:
-    - clang
-    - gcc
+os:
+  - linux
+  - osx
 
+compiler:
+  - clang
+  - gcc
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - libgtest-dev
+      - lcov
+      - rubygems
+      - g++-4.8
+                
 before_install:
-    - sudo apt-get update
-    - sudo apt-get install -qq libgtest-dev
     # Build GTest
     - pushd "`pwd`"
     - sudo mkdir /usr/src/gtest/build
@@ -16,10 +28,7 @@ before_install:
     - sudo ln -s /usr/src/gtest/build/libgtest.so /usr/lib/libgtest.so
     - sudo ln -s /usr/src/gtest/build/libgtest_main.so /usr/lib/libgtest_main.so
     - popd
-    # Install lcov + rubygems
-    - sudo apt-get install -qq lcov rubygems
-    # With g++ version 5
-    - if [ "$CXX" = "g++" ]; then sudo apt-get install -qq g++-5 --force-yes; export CXX="g++-5"; fi
+    # Install lcoveralls
     - gem install lcoveralls
 
 before_script:
