@@ -1,12 +1,12 @@
-#include "../src/avltree.hpp"
-#define BOOST_TEST_MODULE AvlTreeTest
-#include <boost/test/unit_test.hpp>
+#include "../tdigest/avltree.hpp"
 
-BOOST_AUTO_TEST_CASE(avl_tree_empty) {
+#include <gtest/gtest.h>
+
+TEST(AvlTreeTest, GenericTest) {
     AvlTree* tree = new AvlTree();
 
-    BOOST_CHECK_EQUAL(tree->root(), 0);
-    BOOST_CHECK_EQUAL(tree->size(), 0);
+    ASSERT_EQ(tree->root(), 0);
+    ASSERT_EQ(tree->size(), 0);
 
     tree->add(5., 3);
     tree->add(8., 1);
@@ -18,7 +18,7 @@ BOOST_AUTO_TEST_CASE(avl_tree_empty) {
     tree->add(1., 6);
     tree->add(3., 6);
 
-    BOOST_CHECK_EQUAL(tree->checkBalance(), true);
-    BOOST_CHECK_EQUAL(tree->checkAggregates(), true);
-    BOOST_CHECK_EQUAL(tree->checkIntegrity(), true);
+    ASSERT_EQ(tree->checkBalance(), true);
+    ASSERT_EQ(tree->checkAggregates(), true);
+    ASSERT_EQ(tree->checkIntegrity(), true);
 }
