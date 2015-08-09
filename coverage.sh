@@ -23,7 +23,7 @@ lcov --capture --initial --gcov-tool=$GCOV_TOOL --directory . --output-file tdig
 ./tests/AvlTreeTest
 
 # Make
-lcov --no-checksum --directory . --capture --output-file tdigest.info
+lcov --capture --no-checksum --gcov-tool=$GCOV_TOOL --directory . --output-file tdigest.info
 
 # Merge
 lcov --add-tracefile tdigest_base.info --add-tracefile tdigest.info --output-file tdigest_all.info
