@@ -25,12 +25,12 @@ before_install:
     # Config 
     - if [ $CC == 'gcc' ]; then export CC='gcc-4.9'; export CXX='g++-4.9'; fi
     - if [ $CC = 'clang' ]; then export CXX='clang++'; fi
-    - alias gcov="gcov-4.9"
     - $CC --version
     - $CXX --version
     - cmake --version
     - lcov --version
     - gcov --version
+    - which gcov-4.9 && gcov-4.9 --version
     # Build GTest
     - pushd "`pwd`"
     - sudo mkdir /usr/src/gtest/build

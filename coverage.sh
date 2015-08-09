@@ -7,13 +7,17 @@ SRC_DIR="$BASE_DIR/src/"
 
 CURRENT_DIR=`pwd`
 
+if [ -z "$GCOV_TOOL" ]; then
+    GCOV_TOOL=/usr/bin/gcov
+fi
+
 # Go to Tests directory (in build)
 cd src/
 
 # Clean lcov
 lcov --zerocounters --directory .
 # ... and init
-lcov --capture --initial --directory . --output-file tdigest_base.info
+lcov --capture --initial --gcov-tool=$GCOV_TOOL --directory . --output-file tdigest_base.info
 
 # Excute tests
 ./tests/AvlTreeTest
