@@ -1,0 +1,22 @@
+language: cpp
+
+compiler:
+    - clang
+    - gcc
+
+before_install:
+    - sudo apt-get update
+    - sudo apt-get install -qq libgtest0 libgtest-dev
+    - sudo apt-get install -qq lcov rubygems
+    - gem install lcoveralls
+
+before_script:
+    - mkdir build && cd build
+    - cmake ..
+
+script:
+    - make
+    - ../coverage.sh
+
+after_sucess:
+    - lcoveralls "src/tdigest_filtered.info"
